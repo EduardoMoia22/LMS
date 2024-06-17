@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.eduardo.LMS.DTOs.book.BookRequestDTO;
 import com.eduardo.LMS.entities.BookEntity;
@@ -12,6 +13,7 @@ import com.eduardo.LMS.mappers.BookMapper;
 import com.eduardo.LMS.models.BookModel;
 import com.eduardo.LMS.repositories.BookRepository;
 
+@Service()
 public class BookService {
       @Autowired
       private BookRepository bookRepository;

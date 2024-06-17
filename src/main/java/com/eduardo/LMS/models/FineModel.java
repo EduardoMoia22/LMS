@@ -1,5 +1,6 @@
 package com.eduardo.LMS.models;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -16,7 +17,7 @@ import lombok.Setter;
 @Setter()
 @NoArgsConstructor()
 @AllArgsConstructor()
-public class FineModel {
+public class FineModel implements Serializable{
       @Id()
       @GeneratedValue(strategy = GenerationType.UUID)
       private String id;

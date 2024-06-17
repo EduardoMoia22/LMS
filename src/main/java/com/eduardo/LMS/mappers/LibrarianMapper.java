@@ -1,5 +1,6 @@
 package com.eduardo.LMS.mappers;
 
+import com.eduardo.LMS.DTOs.librarian.LibrarianRequestDTO;
 import com.eduardo.LMS.entities.LibrarianEntity;
 import com.eduardo.LMS.models.LibrarianModel;
 
@@ -20,5 +21,15 @@ public class LibrarianMapper {
                         librarianEntity.getEmail(),
                         librarianEntity.getPhoneNumber(),
                         librarianEntity.getEmployeeId());
+      }
+      
+      public static LibrarianEntity requestDTOToEntity(LibrarianRequestDTO librarianRequestDTO){
+            return new LibrarianEntity(
+                  null,
+                  librarianRequestDTO.name(),
+                  librarianRequestDTO.email(),
+                  librarianRequestDTO.phoneNumber(),
+                  librarianRequestDTO.employeeId()
+            );
       }
 }

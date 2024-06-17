@@ -1,5 +1,8 @@
 package com.eduardo.LMS.mappers;
 
+import java.time.LocalDateTime;
+
+import com.eduardo.LMS.DTOs.user.UserRequestDTO;
 import com.eduardo.LMS.entities.UserEntity;
 import com.eduardo.LMS.models.UserModel;
 
@@ -24,5 +27,16 @@ public class UserMapper {
                         userEntity.getAddress(),
                         userEntity.getMembershipType(),
                         userEntity.getRegistrationDate());
+      }
+
+      public static UserEntity requestDTOToEntity(UserRequestDTO userRequestDTO) {
+            return new UserEntity(
+                        null,
+                        userRequestDTO.name(),
+                        userRequestDTO.email(),
+                        userRequestDTO.phoneNumber(),
+                        userRequestDTO.address(),
+                        userRequestDTO.membershipType(),
+                        LocalDateTime.now());
       }
 }

@@ -1,5 +1,7 @@
 package com.eduardo.LMS.models;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor()
 @AllArgsConstructor()
 @Entity()
-public class BookModel {
+public class BookModel implements Serializable{
       @Id()
       @GeneratedValue(strategy = GenerationType.UUID)
       private String id;
