@@ -1,6 +1,7 @@
 package com.eduardo.LMS.mappers;
 
 import com.eduardo.LMS.DTOs.book.BookRequestDTO;
+import com.eduardo.LMS.DTOs.book.BookResponseDTO;
 import com.eduardo.LMS.entities.BookEntity;
 import com.eduardo.LMS.models.BookModel;
 
@@ -31,17 +32,28 @@ public class BookMapper {
                         bookEntity.getShelfLocation());
       }
 
-      public static BookEntity requestDTOToEntity(BookRequestDTO bookRequestDTO){
+      public static BookEntity requestDTOToEntity(BookRequestDTO bookRequestDTO) {
             return new BookEntity(
-                  null,
-                  bookRequestDTO.title(),
-                  bookRequestDTO.author(),
-                  bookRequestDTO.ISBN(),
-                  bookRequestDTO.publisher(),
-                  bookRequestDTO.publicationYear(),
-                  bookRequestDTO.category(),
-                  bookRequestDTO.status(),
-                  bookRequestDTO.shelfLocation()
-            );
+                        null,
+                        bookRequestDTO.title(),
+                        bookRequestDTO.author(),
+                        bookRequestDTO.ISBN(),
+                        bookRequestDTO.publisher(),
+                        bookRequestDTO.publicationYear(),
+                        bookRequestDTO.category(),
+                        bookRequestDTO.status(),
+                        bookRequestDTO.shelfLocation());
+      }
+
+      public static BookResponseDTO entityToBookResponseDTO(BookEntity bookEntity) {
+            return new BookResponseDTO(
+                        bookEntity.getId(),
+                        bookEntity.getTitle(),
+                        bookEntity.getAuthor(),
+                        bookEntity.getISBN(),
+                        bookEntity.getPublisher(),
+                        bookEntity.getPublicationYear(),
+                        bookEntity.getCategory(),
+                        bookEntity.getStatus());
       }
 }

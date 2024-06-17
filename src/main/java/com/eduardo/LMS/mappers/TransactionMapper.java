@@ -1,5 +1,6 @@
 package com.eduardo.LMS.mappers;
 
+import com.eduardo.LMS.DTOs.Transaction.TransactionRequestDTO;
 import com.eduardo.LMS.entities.TransactionEntity;
 import com.eduardo.LMS.models.TransactionModel;
 
@@ -26,5 +27,17 @@ public class TransactionMapper {
                         transactionEntity.getTransactionDate(),
                         transactionEntity.getDueDate(),
                         transactionEntity.getReturnDate());
+      }
+
+      public static TransactionEntity requestDTOToEntity(TransactionRequestDTO transactionRequestDTO) {
+            return new TransactionEntity(
+                        null,
+                        null,
+                        null,
+                        null,
+                        transactionRequestDTO.transactionType(),
+                        transactionRequestDTO.transactionDate(),
+                        transactionRequestDTO.dueDate(),
+                        transactionRequestDTO.returnDate());
       }
 }

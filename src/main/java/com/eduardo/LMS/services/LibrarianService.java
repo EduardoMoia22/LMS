@@ -19,11 +19,10 @@ public class LibrarianService {
       private LibrarianRepository librarianRepository;
 
       public LibrarianEntity createLibrarian(LibrarianRequestDTO librarianData) {
-            LibrarianEntity librarian = LibrarianMapper.requestDTOToEntity(librarianData);
+            LibrarianModel librarian = this.librarianRepository
+                        .save(LibrarianMapper.entityToDBModel(LibrarianMapper.requestDTOToEntity(librarianData)));
 
-            this.librarianRepository.save(LibrarianMapper.entityToDBModel(librarian));
-
-            return librarian;
+            return LibrarianMapper.DBModelToEntity(librarian);
       }
 
       public LibrarianEntity findLibrarianById(String id) throws Exception {

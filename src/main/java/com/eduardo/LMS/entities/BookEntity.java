@@ -17,4 +17,16 @@ public class BookEntity {
       private String category;
       private String status;
       private String shelfLocation;
+
+      public Boolean checkAvilability() {
+            return this.status != "Emprestado";
+      }
+
+      public void borrowBook() {
+            this.status = "Emprestado";
+      }
+
+      public void returnBook() {
+            this.status = "Disponível";
+      }
 }

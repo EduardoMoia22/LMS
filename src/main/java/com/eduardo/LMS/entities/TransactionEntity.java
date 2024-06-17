@@ -18,4 +18,17 @@ public class TransactionEntity {
       private LocalDateTime transactionDate;
       private LocalDateTime dueDate;
       private LocalDateTime returnDate;
+
+      public void setUser(UserEntity user) {
+            this.user = user;
+      }
+
+      public void setBook(BookEntity book) {
+            this.book = book;
+      }
+
+      public void setLibrarian(LibrarianEntity librarian) {
+            this.librarian = librarian;
+      }
+
 }

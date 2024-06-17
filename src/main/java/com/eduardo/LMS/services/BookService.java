@@ -19,11 +19,10 @@ public class BookService {
       private BookRepository bookRepository;
 
       public BookEntity createBook(BookRequestDTO bookData) {
-            BookEntity book = BookMapper.requestDTOToEntity(bookData);
+            BookModel book = this.bookRepository
+                        .save(BookMapper.entityToDBModel(BookMapper.requestDTOToEntity(bookData)));
 
-            this.bookRepository.save(BookMapper.entityToDBModel(book));
-
-            return book;
+            return BookMapper.DBModelToEntity(book);
       }
 
       public List<BookEntity> listAllBooks() {
@@ -42,5 +41,13 @@ public class BookService {
             }
 
             return BookMapper.DBModelToEntity(book.get());
+      }
+
+      public void borrowBook(String id) throws Exception {
+            BookEntity book = this.findBookById(id);
+
+            book.borrowBook();
+
+            this.bookRepository.save(BookMapper.entityToDBModel(book));
       }
 }

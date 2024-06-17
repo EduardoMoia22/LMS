@@ -8,7 +8,6 @@ public record BookResponseDTO(
             String publisher,
             Integer publicationYear,
             String category,
-            String status,
-            String shelfLocation) {
+            String status) {
 
 }
