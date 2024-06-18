@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.eduardo.LMS.models.UserModel;
 
 @Repository()
-public interface UserRepository extends JpaRepository<UserModel, String>{
-    Optional<UserModel> findByEmail(String email);
+public interface UserRepository extends JpaRepository<UserModel, String> {
+      Optional<UserModel> findByEmail(String email);
 }

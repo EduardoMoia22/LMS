@@ -23,7 +23,11 @@ public class BookEntity {
       }
 
       public void borrowBook() {
-            this.status = "Emprestado";
+            if (checkAvilability()) {
+                  this.status = "Emprestado";
+            } else {
+                  throw new IllegalStateException("Livro não está disponível para empréstimo.");
+            }
       }
 
       public void returnBook() {
