@@ -18,12 +18,12 @@ public class BookEntity {
       private String status;
       private String shelfLocation;
 
-      public Boolean checkAvilability() {
+      public Boolean checkAvailability() {
             return this.status != "Emprestado";
       }
 
       public void borrowBook() {
-            if (checkAvilability()) {
+            if (checkAvailability()) {
                   this.status = "Emprestado";
             } else {
                   throw new IllegalStateException("Livro não está disponível para empréstimo.");

@@ -33,7 +33,7 @@ public class TransactionService {
       public Boolean processTransaction(TransactionRequestDTO transactionData) throws Exception {
             BookEntity book = this.bookService.findBookById(transactionData.bookId());
 
-            if (!book.checkAvilability()) {
+            if (!book.checkAvailability()) {
                   return false;
             }
 
