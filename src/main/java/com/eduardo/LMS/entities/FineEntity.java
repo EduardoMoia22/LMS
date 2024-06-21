@@ -11,8 +11,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor()
 public class FineEntity {
       private String id;
-      private UserEntity user;
-      private Double amount;
+      private Integer amountInCents;
       private LocalDateTime dueDate;
       private String status;
+      private UserEntity user;
+      private TransactionEntity transaction;
+
+      public void setUser(UserEntity user) {
+            this.user = user;
+      }
+
+      public void setTransaction(TransactionEntity transaction) {
+            this.transaction = transaction;
+      }
 }

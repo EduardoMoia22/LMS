@@ -31,6 +31,8 @@ public class BookEntity {
       }
 
       public void returnBook() {
-            this.status = "Disponível";
+            if (this.status == "Emprestado") {
+                  this.status = "Disponível";
+            }
       }
 }

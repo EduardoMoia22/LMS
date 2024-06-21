@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.eduardo.LMS.DTOs.Transaction.TransactionRequestDTO;
 import com.eduardo.LMS.entities.BookEntity;
+import com.eduardo.LMS.entities.FineEntity;
 import com.eduardo.LMS.entities.LibrarianEntity;
 import com.eduardo.LMS.entities.TransactionEntity;
 import com.eduardo.LMS.entities.UserEntity;
@@ -30,7 +31,10 @@ public class TransactionService {
       @Autowired()
       private LibrarianService librarianService;
 
-      public Boolean processTransaction(TransactionRequestDTO transactionData) throws Exception {
+      @Autowired()
+      private FineService fineService;
+
+      public Boolean processBorrowBookTransaction(TransactionRequestDTO transactionData) throws Exception {
             BookEntity book = this.bookService.findBookById(transactionData.bookId());
 
             if (!book.checkAvailability()) {
@@ -48,6 +52,20 @@ public class TransactionService {
             this.transactionRepository.save(TransactionMapper.entityToDBModel(transaction));
             this.bookService.borrowBook(book.getId());
 
+            return true;
+      }
+
+      public Boolean processReturnBookTransaction(String transactionId) throws Exception {
+            TransactionEntity transaction = this.findTransactionById(transactionId);
+
+            if (transaction.imposeAFineIfNecessary()) {
+                  List<FineEntity> userTransactionFines = transaction.getUser()
+                              .getFinesByTransaction(transaction.getId());
+
+                  for (FineEntity fine : userTransactionFines) {
+                        this.fineService.createFineByEntity(fine);
+                  }
+            }
             return true;
       }
 

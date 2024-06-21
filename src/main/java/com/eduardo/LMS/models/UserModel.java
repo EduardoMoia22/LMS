@@ -2,11 +2,17 @@ package com.eduardo.LMS.models;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import com.eduardo.LMS.entities.FineEntity;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +25,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-public class UserModel implements Serializable{
+public class UserModel implements Serializable {
       @Id()
       @GeneratedValue(strategy = GenerationType.UUID)
       private String id;
@@ -29,4 +35,6 @@ public class UserModel implements Serializable{
       private String address;
       private String membershipType;
       private LocalDateTime registrationDate;
+      @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+      private List<FineEntity> fines;
 }

@@ -15,7 +15,8 @@ public class UserMapper {
                         userModel.getPhoneNumber(),
                         userModel.getAddress(),
                         userModel.getMembershipType(),
-                        userModel.getRegistrationDate());
+                        userModel.getRegistrationDate(),
+                        userModel.getFines());
       }
 
       public static UserModel entityToDBModel(UserEntity userEntity) {
@@ -26,7 +27,8 @@ public class UserMapper {
                         userEntity.getPhoneNumber(),
                         userEntity.getAddress(),
                         userEntity.getMembershipType(),
-                        userEntity.getRegistrationDate());
+                        userEntity.getRegistrationDate(),
+                        userEntity.getFines());
       }
 
       public static UserEntity requestDTOToEntity(UserRequestDTO userRequestDTO) {
@@ -37,6 +39,7 @@ public class UserMapper {
                         userRequestDTO.phoneNumber(),
                         userRequestDTO.address(),
                         userRequestDTO.membershipType(),
-                        LocalDateTime.now());
+                        LocalDateTime.now(),
+                        null);
       }
 }

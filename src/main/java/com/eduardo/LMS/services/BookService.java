@@ -50,4 +50,12 @@ public class BookService {
 
             this.bookRepository.save(BookMapper.entityToDBModel(book));
       }
+
+      public void returnBook(String id) throws Exception {
+            BookEntity book = this.findBookById(id);
+
+            book.returnBook();
+
+            this.bookRepository.save(BookMapper.entityToDBModel(book));
+      }
 }
