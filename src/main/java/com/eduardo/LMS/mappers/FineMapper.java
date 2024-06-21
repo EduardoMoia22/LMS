@@ -10,6 +10,7 @@ public class FineMapper {
                         fineModel.getId(),
                         fineModel.getAmount(),
                         fineModel.getDueDate(),
+                        fineModel.getPaymentDate(),
                         fineModel.getStatus(),
                         UserMapper.DBModelToEntity(fineModel.getUser()),
                         TransactionMapper.DBModelToEntity(fineModel.getTransaction()));
@@ -20,6 +21,7 @@ public class FineMapper {
                         fineEntity.getId(),
                         fineEntity.getAmountInCents(),
                         fineEntity.getDueDate(),
+                        fineEntity.getPaymentDate(),
                         fineEntity.getStatus(),
                         UserMapper.entityToDBModel(fineEntity.getUser()),
                         TransactionMapper.entityToDBModel(fineEntity.getTransaction()));
@@ -30,6 +32,7 @@ public class FineMapper {
                         null,
                         fineRequestDTO.amountInCents(),
                         fineRequestDTO.dueDate(),
+                        fineRequestDTO.paymentDate(),
                         fineRequestDTO.status(),
                         null,
                         null);

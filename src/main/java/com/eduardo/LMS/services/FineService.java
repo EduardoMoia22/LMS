@@ -1,5 +1,7 @@
 package com.eduardo.LMS.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +10,7 @@ import com.eduardo.LMS.entities.FineEntity;
 import com.eduardo.LMS.entities.TransactionEntity;
 import com.eduardo.LMS.entities.UserEntity;
 import com.eduardo.LMS.mappers.FineMapper;
+import com.eduardo.LMS.models.FineModel;
 import com.eduardo.LMS.repositories.FineRepository;
 
 @Service()
@@ -34,5 +37,23 @@ public class FineService {
 
       public FineEntity createFineByEntity(FineEntity fineData) {
             return FineMapper.DBModelToEntity(this.fineRepository.save(FineMapper.entityToDBModel(fineData)));
+      }
+
+      public FineEntity findFineById(String fineId) throws Exception {
+            Optional<FineModel> fine = this.fineRepository.findById(fineId);
+
+            if (!fine.isPresent()) {
+                  throw new Exception("Multa não encontrada.");
+            }
+
+            return FineMapper.DBModelToEntity(fine.get());
+      }
+
+      public Boolean processPayment(String fineId) throws Exception {
+            FineEntity fine = this.findFineById(fineId);
+
+            Boolean processPayment = fine.processPayment();
+
+            return processPayment;
       }
 }

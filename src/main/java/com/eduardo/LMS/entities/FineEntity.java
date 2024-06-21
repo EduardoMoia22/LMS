@@ -13,6 +13,7 @@ public class FineEntity {
       private String id;
       private Integer amountInCents;
       private LocalDateTime dueDate;
+      private LocalDateTime paymentDate;
       private String status;
       private UserEntity user;
       private TransactionEntity transaction;
@@ -23,5 +24,16 @@ public class FineEntity {
 
       public void setTransaction(TransactionEntity transaction) {
             this.transaction = transaction;
+      }
+
+      public Boolean processPayment() throws Exception {
+            if (this.status == "Pago") {
+                  throw new Exception("Multa já está paga.");
+            }
+
+            this.status = "Pago";
+            this.paymentDate = LocalDateTime.now();
+
+            return true;
       }
 }

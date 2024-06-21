@@ -29,6 +29,7 @@ public class FineModel implements Serializable {
       private String id;
       private Integer amount;
       private LocalDateTime dueDate;
+      private LocalDateTime paymentDate;
       private String status;
       @ManyToOne(fetch = FetchType.LAZY)
       @JoinColumn(name = "user_id")

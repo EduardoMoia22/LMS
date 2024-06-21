@@ -50,7 +50,7 @@ public class TransactionEntity {
             Integer fineAmountInCents = this.defaultFineAmountPerDayInCents * daysOfDelay;
 
             if (checkIfThereIsADelayInReturns()) {
-                  FineEntity fine = new FineEntity(null, fineAmountInCents, LocalDateTime.now().plusMonths(1), "Aberto",
+                  FineEntity fine = new FineEntity(null, fineAmountInCents, LocalDateTime.now().plusMonths(1), null, "Aberto",
                               this.user, this);
 
                   this.user.addFine(fine);
