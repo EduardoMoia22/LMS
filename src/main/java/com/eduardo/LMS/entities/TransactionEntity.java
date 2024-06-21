@@ -1,6 +1,5 @@
 package com.eduardo.LMS.entities;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;

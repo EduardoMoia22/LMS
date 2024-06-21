@@ -18,9 +18,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import com.eduardo.LMS.DTOs.Transaction.TransactionRequestDTO;
 import com.eduardo.LMS.entities.BookEntity;
 import com.eduardo.LMS.entities.LibrarianEntity;
-import com.eduardo.LMS.entities.TransactionEntity;
 import com.eduardo.LMS.entities.UserEntity;
-import com.eduardo.LMS.mappers.TransactionMapper;
 import com.eduardo.LMS.models.TransactionModel;
 import com.eduardo.LMS.repositories.TransactionRepository;
 import com.eduardo.LMS.services.BookService;
@@ -70,8 +68,6 @@ public class TransactionServiceTest {
             when(book.checkAvailability()).thenReturn(true);
             when(userService.findUserById("userId")).thenReturn(user);
             when(librarianService.findLibrarianById("librarianId")).thenReturn(librarian);
-
-            TransactionEntity transaction = TransactionMapper.requestDTOToEntity(transactionRequestDTO);
             when(transactionRepository.save(any(TransactionModel.class))).thenReturn(new TransactionModel());
 
             boolean result = transactionService.processBorrowBookTransaction(transactionRequestDTO);
